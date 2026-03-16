@@ -1,0 +1,33 @@
+﻿@model IEnumerable<MVCExample.Models.Employee>;
+@{
+    ViewData["Title"] = "EmpsInDept";
+}
+
+<h2>Employees in the selected department</h2>
+<table border="2" cellpadding="3" cellspacing="3">
+    <tr>
+        <th>EmployeeId</th>
+        <th>EmpName</th>
+        <th>Salary</th>
+        <th>Image</th>
+        <th>Details</th>
+    </tr>
+    @foreach(var emp in Model)
+    {
+        <tr>
+            <td>@emp.EmployeeId</td>
+            <td>@emp.EmpName</td>
+            <td>@emp.Salary</td>
+            <td>
+                <img src="@emp.ImageUrl" width="100" height="100"/>
+            </td>
+            <td>
+                <a href="/Home/Details?id=@emp.EmployeeId">Details</a>
+            </td>
+            
+        </tr>
+    }
+</table>
+<br/>
+<a href="/Home/collectionOfDepts">Back to Department</a>
+
