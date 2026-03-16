@@ -1,0 +1,38 @@
+﻿@model StudentCourseList.Models.StudentDetailVM
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Student Details</h1>
+<h4>@Model.Name (@Model.Branch)</h4>
+@if (Model.Courses.Any())
+{
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Course Title</th>
+                <th>Credits</th>
+                <th>Department</th>
+                <th>Latest Grade</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(var c in Model.Courses){
+                <tr>
+                <td>@c.Title</td>
+                <td>@c.Credits</td>
+                <td>@c.Department</td>
+                <td>@c.LatestGrade</td>
+                </tr>
+            }
+        </tbody>
+
+    </table>
+}
+else
+{
+    <p>No courses enrolled</p>
+    <br />
+    <a asp-action="Index" class="btn btn-secondary"></a>
+}
+

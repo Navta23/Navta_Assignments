@@ -1,0 +1,39 @@
+﻿@model List<StudentCourseList.Models.StudentCoursesVM>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Student Courses List</h1>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Branch</th>
+            <th>Course Count</th>
+            <th>Course Titles</th>
+            
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var student in Model)
+        {
+            <tr>
+                <td>@student.Name</td>
+                <td>@student.Branch</td>
+                <td>@student.CourseCount</td>
+                <td>
+                    @if (student.CourseTitles.Any())
+                    {
+                        @string.Join(", ", student.CourseTitles)
+                    }
+                    else
+                    {
+                        <span>No Courses</span>
+                    }
+                </td>             
+            </tr>
+        }
+    </tbody>
+</table>
+
